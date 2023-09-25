@@ -14,8 +14,9 @@ class PokeApiServiceImpl implements PokeApiService {
 
   @override
   Future<PokeListModel> getPokemonList({String? path}) async {
-    final response =
-        await _apiClient.get(path: path ?? ApiConstants.pokeListUrl);
+    final response = await _apiClient.get(
+        path: path ?? ApiConstants.pokeListUrl,
+        queryParams: {"limit": "100000000", "offset": "0"});
     return compute(PokeListModel.fromJson, response.data);
   }
 
