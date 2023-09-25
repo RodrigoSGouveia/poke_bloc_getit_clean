@@ -29,6 +29,12 @@ class _PokeListPageState extends State<PokeListPage> {
         appBar: AppBar(
           title: const Text("Pokémanos"),
           backgroundColor: Colors.red,
+          actions: [
+            IconButton(
+              onPressed: _refresh,
+              icon: const Icon(Icons.refresh),
+            )
+          ],
         ),
         body: _buildBody(context),
       ),
@@ -58,5 +64,9 @@ class _PokeListPageState extends State<PokeListPage> {
         return Container();
       },
     );
+  }
+
+  void _refresh() {
+    _pokeListCubit.getPokemonList();
   }
 }
