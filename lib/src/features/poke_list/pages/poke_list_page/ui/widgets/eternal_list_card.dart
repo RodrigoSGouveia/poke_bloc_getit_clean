@@ -14,7 +14,7 @@ class EternalListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsetsDirectional.only(
         top: 8,
         bottom: 8,
@@ -40,25 +40,37 @@ class EternalListCard extends StatelessWidget {
               end: 12.0,
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Row(
+                SizedBox(
+                  width: double.maxFinite,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        index.toString(),
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    const SizedBox(
+                      height: 5,
+                    ),
                     Text(
-                      "${index.toString()} -",
-                      style: const TextStyle(fontSize: 25),
+                      name.capitalize(),
+                      style: const TextStyle(fontSize: 20),
                     ),
                     const SizedBox(
-                      width: 10,
+                      height: 10,
                     ),
-                    Text(name.capitalize(),
-                        style: const TextStyle(fontSize: 20)),
+                    Text(url),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(url),
               ],
             ),
           ),
