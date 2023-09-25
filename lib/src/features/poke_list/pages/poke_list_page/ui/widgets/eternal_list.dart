@@ -19,6 +19,7 @@ class _EternalListState extends State<EternalList> {
         return EternalListCard(
           name: widget.list[index].name,
           url: widget.list[index].url,
+          index: index,
         );
       },
     );

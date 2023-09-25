@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:poke_bloc_getit_clean/src/core/capitalized_string.dart';
 
 class EternalListCard extends StatelessWidget {
   final String name;
   final String url;
-  const EternalListCard({super.key, required this.name, required this.url});
+  final int index;
+  const EternalListCard({
+    super.key,
+    required this.name,
+    required this.url,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +42,19 @@ class EternalListCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(name, style: const TextStyle(fontSize: 20)),
+                Row(
+                  children: [
+                    Text(
+                      "${index.toString()} -",
+                      style: const TextStyle(fontSize: 25),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(name.capitalize(),
+                        style: const TextStyle(fontSize: 20)),
+                  ],
+                ),
                 const SizedBox(
                   height: 10,
                 ),
