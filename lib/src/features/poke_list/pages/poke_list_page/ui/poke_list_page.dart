@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 import 'package:poke_bloc_getit_clean/src/core/dependecy_injection/dependecy_injection.dart';
 import 'package:poke_bloc_getit_clean/src/features/poke_list/pages/poke_list_page/ui/cubit/cubit.dart';
 
@@ -46,13 +47,15 @@ class _PokeListPageState extends State<PokeListPage> {
       bloc: _pokeListCubit,
       builder: (context, state) {
         if (state is PokeListLoadingState) {
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Center(
+            child: Lottie.asset("assets/animations/loading.json"),
           );
         }
         if (state is PokeListSuccessfullState) {
           final list = state.pokeList.results;
-          return EternalList(list: list);
+          return EternalList(
+            list: list,
+          );
         }
 
         if (state is PokeListFailureState) {

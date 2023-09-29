@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:poke_bloc_getit_clean/src/features/poke_details/pages/poke_detail/ui/poke_details_page.dart';
 
 import 'package:poke_bloc_getit_clean/src/features/poke_list/pages/poke_list_page/ui/poke_list_page.dart';
 import 'package:poke_bloc_getit_clean/src/features/splash/splash.dart';
@@ -13,6 +14,9 @@ class RoutesGenerator {
   static Map<String, dynamic> getRoutes(RouteSettings settings) => {
         RoutesConstants.initial: (context) => const SplashPage(),
         RoutesConstants.pokeList: (context) => const PokeListPage(),
+        RoutesConstants.pokemon: (context) => PokeDetailsPage(
+              path: settings.arguments as String,
+            )
       };
 
   static Route<dynamic>? generateRoutes(RouteSettings settings) {

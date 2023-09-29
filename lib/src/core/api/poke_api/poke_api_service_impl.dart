@@ -1,8 +1,8 @@
-// import 'package:poke_bloc_getit_clean/src/features/home/entities/poke_list_entity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:poke_bloc_getit_clean/src/core/api/api_client.dart';
 import 'package:poke_bloc_getit_clean/src/core/api/poke_api/api_contants.dart';
 import 'package:poke_bloc_getit_clean/src/core/api/poke_api/poke_api_service.dart';
+import 'package:poke_bloc_getit_clean/src/features/poke_details/models/pokemon_model.dart';
 import 'package:poke_bloc_getit_clean/src/features/poke_list/models/poke_list_model.dart';
 
 class PokeApiServiceImpl implements PokeApiService {
@@ -20,5 +20,9 @@ class PokeApiServiceImpl implements PokeApiService {
     return compute(PokeListModel.fromJson, response.data);
   }
 
-  // Future<PokemonEntity> getPokemonEntity();
+  @override
+  Future<PokemonModel> getPokemon({required String path}) async {
+    final response = await _apiClient.get(path: path);
+    return compute(PokemonModel.fromJson, response.data);
+  }
 }
