@@ -4,6 +4,7 @@ import 'package:poke_bloc_getit_clean/src/features/poke_details/models/game_indi
 import 'package:poke_bloc_getit_clean/src/features/poke_details/models/move_model.dart';
 import 'package:poke_bloc_getit_clean/src/features/poke_details/models/name_url_pair_model.dart';
 import 'package:poke_bloc_getit_clean/src/features/poke_details/models/sprites_model.dart';
+import 'package:poke_bloc_getit_clean/src/features/poke_details/models/stats_model.dart';
 import 'package:poke_bloc_getit_clean/src/features/poke_details/models/type_model.dart';
 
 part 'pokemon_model.g.dart';
@@ -29,6 +30,7 @@ class PokemonModel {
   @JsonKey(name: "game_indices")
   final List<GameIndicesModel> gameIndices;
   final List<MoveModel> moves;
+  final List<StatsModel> stats;
 
   const PokemonModel({
     required this.id,
@@ -46,6 +48,7 @@ class PokemonModel {
     required this.sprites,
     required this.isDefault,
     required this.gameIndices,
+    required this.stats,
   });
 
   factory PokemonModel.fromJson(Map<String, dynamic> json) =>
