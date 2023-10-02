@@ -43,24 +43,11 @@ class _PokeDetailsPageState extends State<PokeDetailsPage>
 
           if (state is PokeDetailsLoadingState ||
               state is PokeDetailsInitialState) {
-            return Scaffold(
-              appBar: AppBar(
-                title: const Text("Quem é esse pokemon?"),
-              ),
-              body: Center(
-                child: Lottie.asset('assets/animations/loading.json'),
-              ),
-            );
+            return _buildLoading();
           }
 
           if (state is PokeDetailsFailureState) {
-            return Scaffold(
-              appBar: AppBar(
-                title: const Text("Não respondeu a tempo, e algo deu errado"),
-              ),
-              body: Center(
-                  child: LottieBuilder.asset("assets/animations/error.json")),
-            );
+            return _buildFailure();
           }
 
           return const Placeholder();
@@ -123,6 +110,28 @@ class _PokeDetailsPageState extends State<PokeDetailsPage>
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildLoading() {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text("Quem é esse pokemon?"),
+      ),
+      body: Center(
+        child: Lottie.asset('assets/animations/loading.json'),
+      ),
+    );
+  }
+
+  Widget _buildFailure() {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text("Não respondeu a tempo, e algo deu errado"),
+      ),
+      body: Center(child: LottieBuilder.asset("assets/animations/error.json")),
     );
   }
 }
